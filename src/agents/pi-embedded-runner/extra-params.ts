@@ -340,7 +340,7 @@ function createZaiImageFormatWrapper(baseStreamFn: StreamFn | undefined): Stream
                 if (Array.isArray(content)) {
                   const files: Array<{ type: string; file: { url: string; name: string } }> = [];
                   const newContent: Array<unknown> = [];
-                  
+
                   for (const block of content) {
                     if (block && typeof block === "object" && block.type === "image_url") {
                       const imageUrl = (block as { image_url?: { url?: string } }).image_url?.url;
@@ -367,7 +367,7 @@ function createZaiImageFormatWrapper(baseStreamFn: StreamFn | undefined): Stream
                       newContent.push(block);
                     }
                   }
-                  
+
                   if (files.length > 0) {
                     // Replace content with text-only content and add files array
                     msg.content = newContent.length > 0 ? newContent : [{ type: "text", text: "" }];
